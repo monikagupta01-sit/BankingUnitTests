@@ -33,11 +33,5 @@ jobs:
       - name: Build with Maven
         run: mvn clean install
 
-      - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@v1
-        with:
-          args: >
-            -Dsonar.projectKey=monikagupta01-sit_BankingUnitTests
-            -Dsonar.organization=monikagupta01-sit
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        - name: SonarCloud Scan
+        run: mvn sonar:sonar -Dsonar.projectKey=monikagupta01-sit_BankingUnitTests -Dsonar.organization=monikagupta01-sit -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=${{ secrets.SONAR_TOKEN }}
